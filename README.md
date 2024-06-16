@@ -15,6 +15,11 @@
 
 Ensure all the above are installed before stow'ing
 
+### Clone themes for Alacritty
+
+mkdir -p ~/.config/alacritty/themes
+git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+
 ## 'Stow'ing the files
 
 ```sh

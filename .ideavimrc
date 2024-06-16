@@ -23,17 +23,29 @@ set number
 " Moving around
 map <C-o> <Action>(Back)
 map <C-i> <Action>(Forward)
+
+let g:WhichKeyDesc_goto_000 = "<leader>g Go to..."
+let g:WhichKeyDesc_goto_001 = "<leader>gd Declaration"
 map <leader>gd <Action>(GotoDeclaration)
+let g:WhichKeyDesc_goto_002 = "<leader>gD Implementation"
 map <leader>gD <Action>(ReSharperGotoImplementation)
+let g:WhichKeyDesc_goto_003 = "<leader>gc Toggle Commenting"
+map <leader>gc <Action>(CommentByLineComment)
 
 " Modify code
 map <leader>rn <Action>(RenameElement)
-map <leader>gc <Action>(CommentByLineComment)
 
 " Testing
 let g:WhichKeyDesc_test = "<leader>t [T]est"
+let g:WhichKeyDesc_test_status = "<leader>ts [T]est [S]tatus"
 map <leader>ts <Action>(ActivateUnitTestsToolWindow)
+
+let g:WhichKeyDesc_test_runcontext = "<leader>tr [T]est [R]un Context"
 map <leader>tr <Action>(RiderUnitTestRunContextAction)
+
+let g:WhichKeyDesc_test_cover = "<leader>tc [T]est [C]over"
+map <leader>tr <Action>(RiderUnitTestCoverSolutionAction)
+
 
 " Building
 let g:WhichKeyDesc_build = "<leader>b [B]uild..."
@@ -47,8 +59,19 @@ map <leader>bs <Action>(Stop)
 " let g:WhichKeyDesc_build_stop = "<leader>bs [S]top"
 
 " Breakpoints
+let g:WhichKeyDesc_debug = "<leader>d [D]ebug..."
+
+let g:WhichKeyDesc_debug_breakpoint = "<leader>db [D]ebug [B]reakpoint"
 map <leader>db <Action>(ToggleLineBreakpoint)
 map <leader>dc <Action>(RiderRemoveAllLineBreakpoints)
 
-" Classic
+" Code actions
+let g:WhichKeyDesc_build = "<leader>c [C]ode..."
+
+let g:WhichKeyDesc_build = "<leader>ca [C]ode [A]ction"
+map <leader>ca <Action>(ShowIntentionActions)
+
+" My own weird ones
 map <C-s> <Action>(SaveAll)
+map <C-j> o<Esc>
+imap jk <Esc>

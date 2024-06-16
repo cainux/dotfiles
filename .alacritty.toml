@@ -1,5 +1,9 @@
 live_config_reload = true
 
+import = [
+    "~/.config/alacritty/themes/themes/catppuccin_mocha.toml"
+]
+
 [font]
 normal = { family = "MesloLGS NF", style = "Regular" }
 size = 14
