@@ -7,6 +7,9 @@
 let mapleader=" "
 
 " Reload config
+let g:WhichKeyDesc_source_000 = "<leader>s Reload..."
+
+let g:WhichKeyDesc_source_001 = "<leader>si Reload IdeaVim config"
 nnoremap <leader>si :source ~/.ideavimrc<CR>
 
 " which-key plugin
@@ -20,56 +23,74 @@ set notimeout
 set relativenumber
 set number
 
-" Moving around
+" Moving around ===========================================
 map <C-o> <Action>(Back)
 map <C-i> <Action>(Forward)
 
 let g:WhichKeyDesc_goto_000 = "<leader>g Go to..."
+
 let g:WhichKeyDesc_goto_001 = "<leader>gd Declaration"
 map <leader>gd <Action>(GotoDeclaration)
+
 let g:WhichKeyDesc_goto_002 = "<leader>gD Implementation"
 map <leader>gD <Action>(ReSharperGotoImplementation)
+
 let g:WhichKeyDesc_goto_003 = "<leader>gc Toggle Commenting"
 map <leader>gc <Action>(CommentByLineComment)
+" =========================================================
 
-" Modify code
+" Modify code =============================================
+let g:WhichKeyDesc_code_000 = "<leader>r [R]ename"
+
+let g:WhichKeyDesc_code_001 = "<leader>rn [R]e[n]ame"
 map <leader>rn <Action>(RenameElement)
+" =========================================================
 
-" Testing
-let g:WhichKeyDesc_test = "<leader>t [T]est"
-let g:WhichKeyDesc_test_status = "<leader>ts [T]est [S]tatus"
+" Testing =================================================
+let g:WhichKeyDesc_test_000 = "<leader>t [T]est"
+
+let g:WhichKeyDesc_test_001 = "<leader>ts [T]est [S]tatus"
 map <leader>ts <Action>(ActivateUnitTestsToolWindow)
 
-let g:WhichKeyDesc_test_runcontext = "<leader>tr [T]est [R]un Context"
+let g:WhichKeyDesc_test_002 = "<leader>tr [T]est [R]un Context"
 map <leader>tr <Action>(RiderUnitTestRunContextAction)
 
-let g:WhichKeyDesc_test_cover = "<leader>tc [T]est [C]over"
+let g:WhichKeyDesc_test_003 = "<leader>tc [T]est [C]over"
 map <leader>tr <Action>(RiderUnitTestCoverSolutionAction)
+" =========================================================
 
+" Building ================================================
+let g:WhichKeyDesc_build_000 = "<leader>b [B]uild..."
 
-" Building
-let g:WhichKeyDesc_build = "<leader>b [B]uild..."
+let g:WhichKeyDesc_build_001 = "<leader>bb [B]uild Solution"
 map <leader>bb <Action>(BuildSolutionAction)
+
+let g:WhichKeyDesc_build_002 = "<leader>br [R]un"
 map <leader>br <Action>(Run)
+
+let g:WhichKeyDesc_build_003 = "<leader>bd [D]ebug"
 map <leader>bd <Action>(Debug)
+
+let g:WhichKeyDesc_build_004 = "<leader>bs [S]top"
 map <leader>bs <Action>(Stop)
-" let g:WhichKeyDesc_build_solution = "<leader>bb [B]uild Solution"
-" let g:WhichKeyDesc_build_run = "<leader>br [R]un"
-" let g:WhichKeyDesc_build_debug = "<leader>bd [D]ebug"
-" let g:WhichKeyDesc_build_stop = "<leader>bs [S]top"
+" =========================================================
 
-" Breakpoints
-let g:WhichKeyDesc_debug = "<leader>d [D]ebug..."
+" Breakpoints =============================================
+let g:WhichKeyDesc_debug_000 = "<leader>d [D]ebug..."
 
-let g:WhichKeyDesc_debug_breakpoint = "<leader>db [D]ebug [B]reakpoint"
+let g:WhichKeyDesc_debug_001 = "<leader>db Toggle [B]reakpoint"
 map <leader>db <Action>(ToggleLineBreakpoint)
+
+let g:WhichKeyDesc_debug_002 = "<leader>dc [C]lear Breakpoints"
 map <leader>dc <Action>(RiderRemoveAllLineBreakpoints)
+" =========================================================
 
-" Code actions
-let g:WhichKeyDesc_build = "<leader>c [C]ode..."
+" Code actions ============================================
+let g:WhichKeyDesc_code_000 = "<leader>c [C]ode..."
 
-let g:WhichKeyDesc_build = "<leader>ca [C]ode [A]ction"
+let g:WhichKeyDesc_code_001 = "<leader>ca [C]ode [A]ction"
 map <leader>ca <Action>(ShowIntentionActions)
+" =========================================================
 
 " My own weird ones
 map <C-s> <Action>(SaveAll)
