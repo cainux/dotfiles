@@ -37,6 +37,9 @@ map <leader>gD <Action>(ReSharperGotoImplementation)
 
 let g:WhichKeyDesc_goto_003 = "<leader>gc Toggle Commenting"
 map <leader>gc <Action>(CommentByLineComment)
+
+let g:WhichKeyDesc_goto_004 = "<leader>ge Next [E]rror"
+map <leader>ge <Action>(ReSharperGotoNextErrorInSolution)
 " =========================================================
 
 " Modify code =============================================
@@ -90,6 +93,9 @@ let g:WhichKeyDesc_code_000 = "<leader>c [C]ode..."
 
 let g:WhichKeyDesc_code_001 = "<leader>ca [C]ode [A]ction"
 map <leader>ca <Action>(ShowIntentionActions)
+
+let g:WhichKeyDesc_code_002 = "<leader>cf [C]ode [F]ormat"
+map <leader>cf <Action>(ReformatCode)
 " =========================================================
 
 " My own weird ones
