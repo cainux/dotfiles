@@ -2,15 +2,18 @@
 " Enable 'Track Action Ids' to see action names
 " as you perform them in Rider
 "
+" Ensure the folliwing Rider plugins are installed:
+" - Which-Key
+" - vim-flash
 
 " Leader
 let mapleader=" "
 
 " Reload config
-let g:WhichKeyDesc_source_000 = "<leader>s Reload..."
+let g:WhichKeyDesc_source_000 = "<leader>x Reload..."
 
-let g:WhichKeyDesc_source_001 = "<leader>si Reload IdeaVim config"
-nnoremap <leader>si :source ~/.ideavimrc<CR>
+let g:WhichKeyDesc_source_001 = "<leader>xx Reload IdeaVim config"
+nnoremap <leader>xx :source ~/.ideavimrc<CR>
 
 " which-key plugin
 set which-key
@@ -96,6 +99,19 @@ map <leader>ca <Action>(ShowIntentionActions)
 
 let g:WhichKeyDesc_code_002 = "<leader>cf [C]ode [F]ormat"
 map <leader>cf <Action>(ReformatCode)
+" =========================================================
+
+" Searching ===============================================
+let g:WhichKeyDesc_search_000 = "<leader>s [S]earch..."
+
+let g:WhichKeyDesc_search_001 = "<leader>sf [S]earch [F]iles"
+map <leader>sf <Action>(SearchEverywhere)
+" =========================================================
+
+" vim-flash ===============================================
+let g:WhichKeyDesc_flash_000 = "<leader>h Flash"
+
+map <leader>h <Action>(flash.search)
 " =========================================================
 
 " My own weird ones
