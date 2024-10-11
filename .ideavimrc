@@ -109,7 +109,7 @@ map <leader>sf <Action>(SearchEverywhere)
 " =========================================================
 
 " vim-flash ===============================================
-let g:WhichKeyDesc_flash_000 = "<leader>h Flash"
+let g:WhichKeyDesc_flash_000 = "<leader>h ⚡️Flash"
 
 map <leader>h <Action>(flash.search)
 " =========================================================
