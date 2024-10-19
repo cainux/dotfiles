@@ -2,9 +2,10 @@
 " Enable 'Track Action Ids' to see action names
 " as you perform them in Rider
 "
-" Ensure the folliwing Rider plugins are installed:
+" Ensure the following plugins are installed:
 " - Which-Key
 " - vim-flash
+" - Fuzzier (modeled after telescope.nvim)
 
 " Leader
 let mapleader=" "
@@ -105,7 +106,10 @@ map <leader>cf <Action>(ReformatCode)
 let g:WhichKeyDesc_search_000 = "<leader>s [S]earch..."
 
 let g:WhichKeyDesc_search_001 = "<leader>sf [S]earch [F]iles"
-map <leader>sf <Action>(SearchEverywhere)
+map <leader>sf <Action>(com.mituuz.fuzzier.Fuzzier)
+
+let g:WhichKeyDesc_search_002 = "<leader>sr [S]earch [R]epository"
+map <leader>sr <Action>(com.mituuz.fuzzier.FuzzierVCS)
 " =========================================================
 
 " vim-flash ===============================================
@@ -118,3 +122,11 @@ map <leader>h <Action>(flash.search)
 map <C-s> <Action>(SaveAll)
 map <C-j> o<Esc>
 imap jk <Esc>
+
+" IntelliJ IDEA specific settings
+if &ide =~? 'intellij idea'
+    map <leader>sf <Action>(SearchEverywhere)
+    map <leader>bb <Action>(CompileDirty)
+    map <leader>bo <Action>(StepOver)
+    map <leader>ge <Action>(GotoNextError)
+endif
