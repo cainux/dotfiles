@@ -119,9 +119,13 @@ map <leader>h <Action>(flash.search)
 " =========================================================
 
 " My own weird ones
+map <C-c> <Esc>
 map <C-s> <Action>(SaveAll)
 map <C-j> o<Esc>
 imap jk <Esc>
+
+" Nicer searching
+set ignorecase smartcase
 
 " IntelliJ IDEA specific settings
 if &ide =~? 'intellij idea'
