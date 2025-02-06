@@ -16,6 +16,12 @@ let g:WhichKeyDesc_source_000 = "<leader>x Reload..."
 let g:WhichKeyDesc_source_001 = "<leader>xx Reload IdeaVim config"
 nnoremap <leader>xx :source ~/.ideavimrc<CR>
 
+" Save all
+let g:WhichKeyDesc_save_all_000 = "<leader>w Write..."
+
+let g:WhichKeyDesc_save_all_001 = "<leader>xx Reload IdeaVim config"
+nnoremap <leader>wa :wa<CR>
+
 " which-key plugin
 set which-key
 set notimeout

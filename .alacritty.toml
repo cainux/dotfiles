@@ -5,5 +5,9 @@ import = [
 ]
 
 [font]
-normal = { family = "MesloLGS NF", style = "Regular" }
-size = 14
+# normal = { family = "MesloLGS NF", style = "Regular" }
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 13
+
+[window]
+decorations = "none"
