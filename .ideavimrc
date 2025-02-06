@@ -17,9 +17,9 @@ let g:WhichKeyDesc_source_001 = "<leader>xx Reload IdeaVim config"
 nnoremap <leader>xx :source ~/.ideavimrc<CR>
 
 " Save all
-let g:WhichKeyDesc_save_all_000 = "<leader>w Write..."
+let g:WhichKeyDesc_save_all_000 = "<leader>w [W]rite..."
 
-let g:WhichKeyDesc_save_all_001 = "<leader>xx Reload IdeaVim config"
+let g:WhichKeyDesc_save_all_001 = "<leader>wa Write [A]ll"
 nnoremap <leader>wa :wa<CR>
 
 " which-key plugin
