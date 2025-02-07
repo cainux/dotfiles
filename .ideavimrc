@@ -88,7 +88,7 @@ let g:WhichKeyDesc_build_004 = "<leader>bs [S]top"
 map <leader>bs <Action>(Stop)
 " =========================================================
 
-" Breakpoints =============================================
+" Dbugging ================================================
 let g:WhichKeyDesc_debug_000 = "<leader>d [D]ebug..."
 
 let g:WhichKeyDesc_debug_001 = "<leader>db Toggle [B]reakpoint"
@@ -96,6 +96,16 @@ map <leader>db <Action>(ToggleLineBreakpoint)
 
 let g:WhichKeyDesc_debug_002 = "<leader>dc [C]lear Breakpoints"
 map <leader>dc <Action>(RiderRemoveAllLineBreakpoints)
+
+let g:WhichKeyDesc_debug_003 = "<leader>ds [S]tep..."
+let g:WhichKeyDesc_debug_004 = "<leader>dso [S]tep [O]ver"
+map <leader>dso <Action>(StepOver)
+
+let g:WhichKeyDesc_debug_005 = "<leader>dsi [S]tep [I]nto"
+map <leader>dsi <Action>(StepInto)
+
+let g:WhichKeyDesc_debug_006 = "<leader>dr [R]esume"
+map <leader>dsi <Action>(StepInto)
 " =========================================================
 
 " Code actions ============================================
