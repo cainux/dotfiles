@@ -50,6 +50,9 @@ map <leader>gc <Action>(CommentByLineComment)
 
 let g:WhichKeyDesc_goto_004 = "<leader>ge Next [E]rror"
 map <leader>ge <Action>(ReSharperGotoNextErrorInSolution)
+
+let g:WhichKeyDesc_goto_005 = "<leader>gr [R]eferences"
+map <leader>gr <Action>(FindUsages)
 " =========================================================
 
 " Modify code =============================================
