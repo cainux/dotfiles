@@ -140,3 +140,6 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 precmd() {
   print -Pn "\e]2;${PWD##*/}\a"
 }
+
+# Sets cursor to a vertical bar
+echo -ne "\033[6 q"
