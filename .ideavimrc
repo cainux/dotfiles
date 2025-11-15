@@ -60,6 +60,9 @@ let g:WhichKeyDesc_code_000 = "<leader>r [R]ename"
 
 let g:WhichKeyDesc_code_001 = "<leader>rn [R]e[n]ame"
 map <leader>rn <Action>(RenameElement)
+
+let g:WhichKeyDesc_code_002 = "[D]elete [M]ethod"
+nnoremap dm V/{<CR>%d
 " =========================================================
 
 " Testing =================================================
