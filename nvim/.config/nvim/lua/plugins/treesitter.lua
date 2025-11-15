@@ -22,7 +22,7 @@ return {
                 "typescript",
                 "yaml",
                 "dockerfile",
-                "svelte",
+                -- "svelte",
                 "java",
                 "json",
                 "jsonc",

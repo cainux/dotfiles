@@ -22,7 +22,7 @@ return {
                     "jsonls",
 
                     -- bit of fun
-                    "svelte",
+                    -- "svelte",
                     "ts_ls",
                     "cssls",
                     "rust_analyzer",
@@ -55,7 +55,7 @@ return {
             lspconfig.dockerls.setup { capabilities = capabilities }
             lspconfig.docker_compose_language_service.setup { capabilities = capabilities }
             lspconfig.bashls.setup { capabilities = capabilities }
-            lspconfig.svelte.setup { capabilities = capabilities }
+            -- lspconfig.svelte.setup { capabilities = capabilities }
             lspconfig.ts_ls.setup { capabilities = capabilities }
             lspconfig.cssls.setup { capabilities = capabilities }
             lspconfig.rust_analyzer.setup { capabilities = capabilities }
