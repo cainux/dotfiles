@@ -1,78 +1,79 @@
 return {
-    -- Manage language servers from within neovim
     {
-        "williamboman/mason.nvim",
-        config = function() require("mason").setup() end,
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        config = function()
-            require("mason-lspconfig").setup {
-                ensure_installed = {
-                    -- for configuring neovim
-                    "lua_ls",
-
-                    -- my day job
-                    "csharp_ls",
-                    "terraformls",
-                    "tflint",
-                    "dockerls",
-                    "docker_compose_language_service",
-                    "bashls",
-                    "jsonls",
-
-                    -- bit of fun
-                    -- "svelte",
-                    "ts_ls",
-                    "cssls",
-                    "rust_analyzer",
-                    "sqlls",
-                    "eslint",
-                    "powershell_es",
-                    "html",
+        "hrsh7th/nvim-cmp",
+        dependencies = {
+            {
+                "L3MON4D3/LuaSnip",
+                dependencies = {
+                    "saadparwaiz1/cmp_luasnip",
+                    "rafamadriz/friendly-snippets",
                 },
-                -- handlers = {
-                --     lsp_zero.default_setup,
-                --     lua_ls = function()
-                --         local lua_opts = lsp_zero.nvim_lua_ls()
-                --         require("lspconfig").lua_ls.setup(lua_opts)
-                --     end,
-                -- }
-            }
-        end,
-    },
-    {
-        "neovim/nvim-lspconfig",
+            },
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-path",
+        },
         config = function()
-            local lspconfig = require "lspconfig"
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            local luasnip = require "luasnip"
+            luasnip.config.setup {}
 
-            -- Setup language servers. There's probably a nicer way of doing this
-            lspconfig.lua_ls.setup { capabilities = capabilities }
-            lspconfig.csharp_ls.setup { capabilities = capabilities }
-            lspconfig.terraformls.setup { capabilities = capabilities }
-            lspconfig.tflint.setup { capabilities = capabilities }
-            lspconfig.dockerls.setup { capabilities = capabilities }
-            lspconfig.docker_compose_language_service.setup { capabilities = capabilities }
-            lspconfig.bashls.setup { capabilities = capabilities }
-            -- lspconfig.svelte.setup { capabilities = capabilities }
-            lspconfig.ts_ls.setup { capabilities = capabilities }
-            lspconfig.cssls.setup { capabilities = capabilities }
-            lspconfig.rust_analyzer.setup { capabilities = capabilities }
-            lspconfig.sqlls.setup { capabilities = capabilities }
-            lspconfig.eslint.setup { capabilities = capabilities }
-            lspconfig.powershell_es.setup { capabilities = capabilities }
-            lspconfig.html.setup { capabilities = capabilities }
+            local cmp = require "cmp"
+            cmp.setup {
+                snippet = {
+                    expand = function(args)
+                        luasnip.lsp_expand(args.body)
+                    end,
+                },
+                window = {
+                    completion = cmp.config.window.bordered(),
+                    documentation = cmp.config.window.bordered(),
+                },
+                mapping = cmp.mapping.preset.insert {
+                    ["<C-n>"] = cmp.mapping.select_next_item(),
+                    ["<C-p>"] = cmp.mapping.select_prev_item(),
 
-            lspconfig.jsonls.setup {
-                capabilities = capabilities,
-                settings = {
-                    json = {
-                        allowComments = true,
-                        allowTrailingCommas = true,
-                    }
-                }
+                    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+
+                    ["<C-Space>"] = cmp.mapping.complete(),
+
+                    ["<C-e>"] = cmp.mapping.abort(),
+
+                    ["<C-y>"] = cmp.mapping.confirm { select = true },
+                    ["<Tab>"] = cmp.mapping.confirm { select = true }, -- Sorry, this is decades old for me :)
+                    ["<CR>"] = cmp.mapping.confirm { select = true },
+
+                    -- Think of <c-l> as moving to the right of your snippet expansion.
+                    --  So if you have a snippet that's like:
+                    --  function $name($args)
+                    --    $body
+                    --  end
+                    --
+                    -- <c-l> will move you to the right of each of the expansion locations.
+                    -- <c-h> is similar, except moving you backwards.
+                    ["<C-l>"] = cmp.mapping(function()
+                        if luasnip.expand_or_locally_jumpable() then
+                            luasnip.expand_or_jump()
+                        end
+                    end, { "i", "s" }),
+                    ["<C-h>"] = cmp.mapping(function()
+                        if luasnip.locally_jumpable(-1) then
+                            luasnip.jump(-1)
+                        end
+                    end, { "i", "s" }),
+                },
+                sources = cmp.config.sources({
+                    { name = "nvim_lsp" },
+                    { name = "luasnip" },
+                    { name = "path" },
+                    { name = "buffer" },
+                }),
             }
+
+            local cmp_nvim_lsp = require "cmp_nvim_lsp"
+            local capabilities = cmp_nvim_lsp.default_capabilities()
+            vim.lsp.config("*", {
+                capabilities = capabilities
+            })
 
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
@@ -83,7 +84,8 @@ return {
                     --
                     -- In this case, we create a function that lets us more easily define mappings specific
                     -- for LSP related items. It sets the mode, buffer and description for us each time.
-                    local map = function(keys, func, desc) vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc }) end
+                    local map = function(keys, func, desc) vim.keymap.set("n", keys, func,
+                            { buffer = event.buf, desc = "LSP: " .. desc }) end
 
                     -- Jump to the definition of the word under your cursor.
                     --  This is where a variable was first declared, or where a function is defined, etc.

@@ -18,7 +18,7 @@ return {
             local scan = require "plenary.scandir"
 
             -- Get the runtime path where your headers are stored
-            local runtime_path = vim.fn.stdpath "config" .. "/lua/plugins/alpha_headers"
+            local runtime_path = vim.fn.stdpath "config" .. "/lua/cain/plugins/alpha_headers"
 
             -- Scan for all Lua files in the headers directory
             local headers = {}
@@ -34,7 +34,7 @@ return {
             -- random_header = "shingeki"
 
             -- Construct the full path and require the header
-            local header = "plugins.alpha_headers." .. random_header
+            local header = "cain.plugins.alpha_headers." .. random_header
             require(header).setup(dashboard)
 
             dashboard.section.buttons.val = {
