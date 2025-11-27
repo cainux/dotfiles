@@ -15,8 +15,8 @@
 
 Ensure all the above are installed before stow'ing
 
-## 'Stow'ing the files
+## 'Stow'ing
 
 ```sh
-stow .
+stow <directory>
 ```
