@@ -143,3 +143,4 @@ precmd() {
 
 # Sets cursor to a vertical bar
 echo -ne "\033[6 q"
+export PATH="$HOME/.local/bin:$PATH"

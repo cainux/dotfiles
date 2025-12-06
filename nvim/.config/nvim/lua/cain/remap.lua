@@ -33,3 +33,5 @@ vim.keymap.set("n", "<leader>on", vim.cmd.Ex, { desc = "[O]pen [N]etrw" })
 
 -- Trying these out for a bit
 vim.keymap.set("n", "<leader>gwp", "<cmd>!git add . && git commit -am 'wip' && git push<CR>", { desc = "[g]it commit -am [w]ip && git [p]ush" })
+
+vim.keymap.set("n", "<leader>rl", "<cmd>w<CR><cmd>!lua %<CR>", { desc = "[r]un [l]ua file" })
