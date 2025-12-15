@@ -1,11 +1,11 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    -- branch = "main",
-    tag = "v0.10.0",
+    branch = "main",
+    -- tag = "v0.10.0",
     dependencies = {
         "windwp/nvim-ts-autotag",
     },
-    lazy = false,
+    lazy = true,
     build = ":TSUpdate",
     config = function()
         local configs = require "nvim-treesitter"
@@ -22,13 +22,13 @@ return {
                 "typescript",
                 "yaml",
                 "dockerfile",
-                -- "svelte",
+                "svelte",
                 "java",
                 "json",
                 "jsonc",
             },
-            auto_install = false,
-            sync_install = false,
+            auto_install = true,
+            sync_install = true,
             highlight = { enable = true },
             indent = { enable = true },
             autotag = { enable = true },
