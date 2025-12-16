@@ -6,6 +6,10 @@ font-family = "CaskaydiaMono Nerd Font"
 font-style = Regular
 font-size = 10
 
+# Platform-specific configuration
+config-file = ?./config.macos
+config-file = ?./config.linux
+
 # Window
 # window-padding-x = 14
 # window-padding-y = 14
