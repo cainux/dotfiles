@@ -35,3 +35,6 @@ custom-shader = "./shaders/cursor_smear_fade.glsl"
 
 # Slowdown mouse scrolling
 mouse-scroll-multiplier = 0.95
+
+# Cannot remember why this was added...
+keybind = shift+enter=text:\x1b\r
