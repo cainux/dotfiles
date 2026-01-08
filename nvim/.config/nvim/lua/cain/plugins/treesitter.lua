@@ -26,6 +26,7 @@ return {
                 "java",
                 "json",
                 "jsonc",
+                "proto",
             },
             auto_install = true,
             sync_install = true,

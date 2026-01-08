@@ -12,6 +12,7 @@ return {
             "docker_compose_language_service",
             "bashls",
             "jsonls",
+            "protols",
 
             -- bit of fun
             "svelte",
