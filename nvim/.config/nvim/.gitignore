@@ -1,5 +1,0 @@
-# Machine-specific LSP configuration
-lua/machine_lsp.lua
-
-# Lazy.nvim plugin directory
-lazy-lock.json

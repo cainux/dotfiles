@@ -1,13 +1,5 @@
 -- LSP server configurations
 -- Servers are only configured if they're available via Mason or system install
---
--- Machine-specific overrides:
--- Create ~/.config/nvim/lua/machine_lsp.lua with custom configurations
--- Example machine_lsp.lua:
---   return {
---       csharp_ls = { filetypes = { "cs" } },
---       lua_ls = { settings = { Lua = { workspace = { library = vim.api.nvim_get_runtime_file("", true) } } } }
---   }
 
 return {
     "neovim/nvim-lspconfig",
@@ -21,23 +13,10 @@ return {
         -- Get default capabilities from nvim-cmp
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-        -- Try to load machine-specific LSP configurations
-        local machine_config = {}
-        local ok, machine_module = pcall(require, "machine_lsp")
-        if ok then
-            machine_config = machine_module
-            vim.notify("Loaded machine-specific LSP configurations", vim.log.levels.INFO)
-        end
-
         -- Helper function to check if LSP server is available
         local function setup_if_available(server_name, opts)
             opts = opts or {}
             opts.capabilities = capabilities
-
-            -- Merge with machine-specific config if available
-            if machine_config[server_name] then
-                opts = vim.tbl_deep_extend("force", opts, machine_config[server_name])
-            end
 
             -- Try to setup the server; if it's not installed, this will silently fail
             local ok = pcall(lspconfig[server_name].setup, opts)
