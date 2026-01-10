@@ -29,7 +29,16 @@ return {
         end
 
         -- Protocol Buffers
-        setup_if_available("protols", {})
+        setup_if_available("protols", {
+            before_init = function(_, config)
+                config.init_options = {
+                    include_paths = {
+                        vim.fn.expand("~/shared-protos"),
+                        ".",
+                    }
+                }
+            end
+        })
 
         -- Lua
         setup_if_available("lua_ls", {
