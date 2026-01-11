@@ -8,18 +8,19 @@ return {
         "mason-org/mason-lspconfig.nvim",
     },
     config = function()
-        local lspconfig = require("lspconfig")
-
         -- Get default capabilities from nvim-cmp
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-        -- Helper function to check if LSP server is available
+        -- Helper function to configure and enable LSP server if available
         local function setup_if_available(server_name, opts)
             opts = opts or {}
             opts.capabilities = capabilities
 
-            -- Try to setup the server; if it's not installed, this will silently fail
-            local ok = pcall(lspconfig[server_name].setup, opts)
+            -- Configure the server
+            vim.lsp.config(server_name, opts)
+
+            -- Try to enable the server; if it's not installed, this will silently fail
+            local ok = pcall(vim.lsp.enable, server_name)
             if not ok then
                 vim.notify(
                     string.format("LSP server '%s' not available on this machine", server_name),
