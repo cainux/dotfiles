@@ -69,11 +69,8 @@ return {
                 }),
             }
 
-            local cmp_nvim_lsp = require "cmp_nvim_lsp"
-            local capabilities = cmp_nvim_lsp.default_capabilities()
-            vim.lsp.config("*", {
-                capabilities = capabilities
-            })
+            -- Note: LSP capabilities are now configured per-server in servers.lua
+            -- This allows for machine-specific LSP configurations
 
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
