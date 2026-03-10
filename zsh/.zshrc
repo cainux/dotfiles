@@ -112,10 +112,6 @@ _fzf_compgen_dir() {
 # alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 alias ls="eza --color=always --long --git --icons=always --no-time --no-user --no-permissions"
 
-# ---- Zoxide (better cd) ----
-eval "$(zoxide init zsh)"
-alias cd="z"
-
 # History
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
@@ -134,7 +130,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Sets the terminal name to be the last segment of the path (tmux needs this for me)
 precmd() {
@@ -144,3 +139,43 @@ precmd() {
 # Sets cursor to a vertical bar
 echo -ne "\033[6 q"
 export PATH="$HOME/.local/bin:$PATH"
+
+# Worktree aliases from https://gist.github.com/dhh/18575558fc5ee10f15b6cd3e108ed844
+# Create a new worktree and branch from within current git directory.
+ga() {
+  echo "HELLO"
+  which git
+  if [[ -z "$1" ]]; then
+    echo "Usage: ga [branch name]"
+    return 1
+  fi
+
+  local branch="$1"
+  local base="$(basename "$PWD")"
+  local worktreepath="../${base}--${branch}"
+
+  git worktree add -b "$branch" "$worktreepath"
+  # mise trust "$worktreepath"
+  cd "$worktreepath"
+}
+
+# Remove worktree and branch from within active worktree directory.
+gd() {
+  if gum confirm "Remove worktree and branch?"; then
+    local cwd base branch root
+
+    cwd="$(pwd)"
+    worktree="$(basename "$cwd")"
+
+    # split on first `--`
+    root="${worktree%%--*}"
+    branch="${worktree#*--}"
+
+    # Protect against accidentially nuking a non-worktree directory
+    if [[ "$root" != "$worktree" ]]; then
+      cd "../$root"
+      git worktree remove "$worktree" --force
+      git branch -D "$branch"
+    fi
+  fi
+}
