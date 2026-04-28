@@ -20,6 +20,8 @@ return {
             }
         }
 
-        vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, { desc = "[C]ode [F]ormat" })
+        vim.keymap.set("n", "<leader>cf", function()
+            conform.format { lsp_fallback = true }
+        end, { desc = "[C]ode [F]ormat" })
     end,
 }
