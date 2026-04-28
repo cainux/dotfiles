@@ -8,9 +8,7 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     build = ":TSUpdate",
     config = function()
-        local configs = require "nvim-treesitter.configs"
-
-        configs.setup {
+        require("nvim-treesitter").setup {
             ensure_installed = {
                 "lua",
                 "vim",
@@ -29,10 +27,14 @@ return {
                 "proto",
             },
             auto_install = true,
-            sync_install = true,
-            highlight = { enable = true },
-            indent = { enable = true },
-            autotag = { enable = true },
         }
+
+        vim.api.nvim_create_autocmd("FileType", {
+            callback = function()
+                pcall(vim.treesitter.start)
+            end,
+        })
+
+        require("nvim-ts-autotag").setup()
     end,
 }
