@@ -143,7 +143,6 @@ export PATH="$HOME/.local/bin:$PATH"
 # Worktree aliases from https://gist.github.com/dhh/18575558fc5ee10f15b6cd3e108ed844
 # Create a new worktree and branch from within current git directory.
 ga() {
-  echo "HELLO"
   which git
   if [[ -z "$1" ]]; then
     echo "Usage: ga [branch name]"

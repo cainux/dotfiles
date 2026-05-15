@@ -16,7 +16,8 @@ config-file = ?"~/.ghostty.machine"
 # window-padding-y = 14
 # confirm-close-surface=false
 # resize-overlay = never
-window-decoration = none
+window-decoration = auto
+macos-titlebar-style = hidden
 
 # Cursor stlying
 # cursor-style = "block"
