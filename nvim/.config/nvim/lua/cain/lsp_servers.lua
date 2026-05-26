@@ -25,7 +25,7 @@ return {
         },
     },
     csharp_ls = {},
-    terraformls = {},
+    tofu_ls = {},
     tflint = {},
     dockerls = {},
     bashls = {},
