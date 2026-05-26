@@ -8,30 +8,27 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     build = ":TSUpdate",
     config = function()
-        require("nvim-treesitter").setup {
-            ensure_installed = {
-                "lua",
-                "vim",
-                "vimdoc",
-                "query",
-                "hcl",
-                "c_sharp",
-                "javascript",
-                "typescript",
-                "yaml",
-                "dockerfile",
-                "svelte",
-                "java",
-                "json",
-                "jsonc",
-                "proto",
-            },
-            auto_install = true,
+        require("nvim-treesitter").install {
+            "lua",
+            "vim",
+            "vimdoc",
+            "query",
+            "hcl",
+            "terraform",
+            "c_sharp",
+            "javascript",
+            "typescript",
+            "yaml",
+            "dockerfile",
+            "svelte",
+            "java",
+            "json",
+            "proto",
         }
 
         vim.api.nvim_create_autocmd("FileType", {
-            callback = function()
-                pcall(vim.treesitter.start)
+            callback = function(args)
+                pcall(vim.treesitter.start, args.buf)
             end,
         })
 
