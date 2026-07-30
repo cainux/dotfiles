@@ -1,0 +1,40 @@
+/* --- Catppuccin Mocha Theme for Native Preview --- */
+.vscode-body {
+  background-color: #1e1e2e !important;
+  color: #cdd6f4 !important;
+  padding: 2em;
+}
+
+/* Headings */
+.vscode-body h1 { color: #f5c2e7 !important; border-bottom: 1px solid #313244; }
+.vscode-body h2 { color: #cba6f7 !important; border-bottom: 1px solid #313244; }
+.vscode-body h3 { color: #89b4fa !important; }
+.vscode-body h4 { color: #a6e3a1 !important; }
+.vscode-body h5 { color: #f9e2af !important; }
+.vscode-body h6 { color: #fab387 !important; }
+
+/* Checkboxes (GitHub-style Catppuccin Green Accent) */
+.contains-task-list input[type="checkbox"] {
+  accent-color: #a6e3a1;
+  transform: scale(1.15);
+  cursor: pointer;
+}
+
+/* Blockquotes */
+.vscode-body blockquote {
+  color: #bac2de !important;
+  border-left: 4px solid #b4befe !important;
+  background-color: #181825 !important;
+}
+
+/* Code Blocks */
+.vscode-body code, .vscode-body pre {
+  background-color: #181825 !important;
+  border-radius: 6px;
+}
+
+/* Horizontal Rules */
+.vscode-body hr {
+  background-color: #45475a !important;
+  height: 2px;
+}
