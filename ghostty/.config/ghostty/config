@@ -17,7 +17,7 @@ config-file = ?"~/.ghostty.machine"
 # confirm-close-surface=false
 # resize-overlay = never
 window-decoration = auto
-macos-titlebar-style = hidden
+macos-titlebar-style = transparent
 
 # Cursor stlying
 # cursor-style = "block"
@@ -28,10 +28,10 @@ macos-titlebar-style = hidden
 # keybind = f11=toggle_fullscreen
 # keybind = shift+insert=paste_from_clipboard
 # keybind = control+insert=copy_to_clipboard
-keybind = super+control+shift+alt+arrow_down=resize_split:down,100
-keybind = super+control+shift+alt+arrow_up=resize_split:up,100
-keybind = super+control+shift+alt+arrow_left=resize_split:left,100
-keybind = super+control+shift+alt+arrow_right=resize_split:right,100
+# keybind = super+control+shift+alt+arrow_down=resize_split:down,100
+# keybind = super+control+shift+alt+arrow_up=resize_split:up,100
+# keybind = super+control+shift+alt+arrow_left=resize_split:left,100
+# keybind = super+control+shift+alt+arrow_right=resize_split:right,100
 
 # Shaders
 custom-shader = "./shaders/cursor_smear_fade.glsl"
