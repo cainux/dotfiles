@@ -2,3 +2,12 @@ onboarding = false
 
 [ui]
 prompt_new_tab_name = false
+
+[keys]
+new_workspace = ""
+
+[[keys.command]]
+key = "prefix+shift+n"
+type = "shell"
+command = "herdr workspace create --cwd ~/code --focus"
+description = "new workspace in ~/code"
